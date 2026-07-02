@@ -1,0 +1,246 @@
+version: "3.8"
+
+networks:
+  monitoring:
+    driver: bridge
+
+services:
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    networks:
+      - monitoring
+    mem_limit: 2000m
+    cpus: 1.0
+    restart: unless-stopped
+
+  blc-prometheus:
+    image: prom/prometheus:latest
+    container_name: blc-prometheus
+    ports: ["9091:9090"]
+    volumes: ["./blc-prometheus.yaml:/etc/prometheus/prometheus.yml"]
+    command:
+      [
+        "--config.file=/etc/prometheus/prometheus.yml",
+        "--storage.tsdb.path=/tmp/prometheus",
+        "--storage.tsdb.retention.time=1h",
+      ]
+    networks: [monitoring]
+    mem_limit: 1000m
+    cpus: 0.5
+    restart: unless-stopped
+
+  saradar-prometheus:
+    image: prom/prometheus:latest
+    container_name: saradar-prometheus
+    ports: ["9092:9090"]
+    volumes: ["./saradar-prometheus.yaml:/etc/prometheus/prometheus.yml"]
+    command:
+      [
+        "--config.file=/etc/prometheus/prometheus.yml",
+        "--storage.tsdb.path=/tmp/prometheus",
+        "--storage.tsdb.retention.time=1h",
+      ]
+    networks: [monitoring]
+    mem_limit: 1000m
+    cpus: 0.5
+    restart: unless-stopped
+
+  cirius-prometheus:
+    image: prom/prometheus:latest
+    container_name: cirius-prometheus
+    ports: ["9093:9090"]
+    volumes: ["./cirius-prometheus.yaml:/etc/prometheus/prometheus.yml"]
+    command:
+      [
+        "--config.file=/etc/prometheus/prometheus.yml",
+        "--storage.tsdb.path=/tmp/prometheus",
+        "--storage.tsdb.retention.time=1h",
+      ]
+    networks: [monitoring]
+    mem_limit: 1000m
+    cpus: 0.5
+    restart: unless-stopped
+
+  bob-finance-prometheus:
+    image: prom/prometheus:latest
+    container_name: bob-finance-prometheus
+    ports: ["9094:9090"]
+    volumes: ["./bob-finance-prometheus.yaml:/etc/prometheus/prometheus.yml"]
+    command:
+      [
+        "--config.file=/etc/prometheus/prometheus.yml",
+        "--storage.tsdb.path=/tmp/prometheus",
+        "--storage.tsdb.retention.time=1h",
+      ]
+    networks: [monitoring]
+    mem_limit: 1000m
+    cpus: 0.5
+    restart: unless-stopped
+
+  cash-plus-prometheus:
+    image: prom/prometheus:latest
+    container_name: cash-plus-prometheus
+    ports: ["9095:9090"]
+    volumes: ["./cash-plus-prometheus.yaml:/etc/prometheus/prometheus.yml"]
+    command:
+      [
+        "--config.file=/etc/prometheus/prometheus.yml",
+        "--storage.tsdb.path=/tmp/prometheus",
+        "--storage.tsdb.retention.time=1h",
+      ]
+    networks: [monitoring]
+    mem_limit: 1000m
+    cpus: 0.5
+    restart: unless-stopped
+
+  novatrust-prometheus:
+    image: prom/prometheus:latest
+    container_name: novatrust-prometheus
+    ports: ["9096:9090"]
+    volumes: ["./novatrust-prometheus.yaml:/etc/prometheus/prometheus.yml"]
+    command:
+      [
+        "--config.file=/etc/prometheus/prometheus.yml",
+        "--storage.tsdb.path=/tmp/prometheus",
+        "--storage.tsdb.retention.time=1h",
+      ]
+    networks: [monitoring]
+    mem_limit: 1000m
+    cpus: 0.5
+    restart: unless-stopped
+
+  my-monty-prometheus:
+    image: prom/prometheus:latest
+    container_name: my-monty-prometheus
+    ports: ["9097:9090"]
+    volumes: ["./my-monty-prometheus.yaml:/etc/prometheus/prometheus.yml"]
+    command:
+      [
+        "--config.file=/etc/prometheus/prometheus.yml",
+        "--storage.tsdb.path=/tmp/prometheus",
+        "--storage.tsdb.retention.time=1h",
+      ]
+    networks: [monitoring]
+    mem_limit: 1000m
+    cpus: 0.5
+    restart: unless-stopped
+
+  neonism-prometheus:
+    image: prom/prometheus:latest
+    container_name: neonism-prometheus
+    ports: ["9098:9090"]
+    volumes: ["./neonism-prometheus.yaml:/etc/prometheus/prometheus.yml"]
+    command:
+      [
+        "--config.file=/etc/prometheus/prometheus.yml",
+        "--storage.tsdb.path=/tmp/prometheus",
+        "--storage.tsdb.retention.time=1h",
+      ]
+    networks: [monitoring]
+    mem_limit: 1000m
+    cpus: 0.5
+    restart: unless-stopped
+
+  yallapay-prometheus:
+    image: prom/prometheus:latest
+    container_name: yallapay-prometheus
+    ports: ["9099:9090"]
+    volumes: ["./yallapay-prometheus.yaml:/etc/prometheus/prometheus.yml"]
+    command:
+      [
+        "--config.file=/etc/prometheus/prometheus.yml",
+        "--storage.tsdb.path=/tmp/prometheus",
+        "--storage.tsdb.retention.time=1h",
+      ]
+    networks: [monitoring]
+    mem_limit: 1000m
+    cpus: 0.5
+    restart: unless-stopped
+
+  cedarxneo-prometheus:
+    image: prom/prometheus:latest
+    container_name: cedarxneo-prometheus
+    ports: ["9100:9090"]
+    volumes: ["./cedarxneo-prometheus.yaml:/etc/prometheus/prometheus.yml"]
+    command:
+      [
+        "--config.file=/etc/prometheus/prometheus.yml",
+        "--storage.tsdb.path=/tmp/prometheus",
+        "--storage.tsdb.retention.time=1h",
+      ]
+    networks: [monitoring]
+    mem_limit: 1000m
+    cpus: 0.5
+    restart: unless-stopped
+
+  libano-prometheus:
+    image: prom/prometheus:latest
+    container_name: libano-prometheus
+    ports: ["9101:9090"]
+    volumes: ["./libano-prometheus.yaml:/etc/prometheus/prometheus.yml"]
+    command:
+      [
+        "--config.file=/etc/prometheus/prometheus.yml",
+        "--storage.tsdb.path=/tmp/prometheus",
+        "--storage.tsdb.retention.time=1h",
+      ]
+    networks: [monitoring]
+    mem_limit: 1000m
+    cpus: 0.5
+    restart: unless-stopped
+
+  ofinance-prometheus:
+    image: prom/prometheus:latest
+    container_name: ofinance-prometheus
+    ports: ["9102:9090"]
+    volumes: ["./ofinance-prometheus.yaml:/etc/prometheus/prometheus.yml"]
+    command:
+      [
+        "--config.file=/etc/prometheus/prometheus.yml",
+        "--storage.tsdb.path=/tmp/prometheus",
+        "--storage.tsdb.retention.time=1h",
+      ]
+    networks: [monitoring]
+    mem_limit: 1000m
+    cpus: 0.5
+    restart: unless-stopped
+
+  arkam-prometheus:
+    image: prom/prometheus:latest
+    container_name: arkam-prometheus
+    ports: ["9103:9090"]
+    volumes: ["./arkam-prometheus.yaml:/etc/prometheus/prometheus.yml"]
+    command:
+      [
+        "--config.file=/etc/prometheus/prometheus.yml",
+        "--storage.tsdb.path=/tmp/prometheus",
+        "--storage.tsdb.retention.time=1h",
+      ]
+    networks: [monitoring]
+    mem_limit: 1000m
+    cpus: 0.5
+    restart: unless-stopped
+
+  Blue-wallet-prometheus:
+    image: prom/prometheus:latest
+    container_name: Blue-wallet-prometheus
+    ports: ["9104:9090"]
+    volumes: ["./Blue-wallet-prometheus.yaml:/etc/prometheus/prometheus.yml"]
+    command:
+      [
+        "--config.file=/etc/prometheus/prometheus.yml",
+        "--storage.tsdb.path=/tmp/prometheus",
+        "--storage.tsdb.retention.time=1h",
+      ]
+    networks: [monitoring]
+    mem_limit: 1000m
+    cpus: 0.5
+    restart: unless-stopped
+
+volumes:
+  grafana-storage:

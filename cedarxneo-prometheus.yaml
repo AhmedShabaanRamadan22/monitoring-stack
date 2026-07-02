@@ -1,0 +1,18 @@
+global:
+  scrape_interval: 1m
+  evaluation_interval: 1m
+  scrape_timeout: 10s
+
+scrape_configs:
+  - job_name: prometheus
+    static_configs:
+      - targets:
+          - localhost:9090
+          - 172.18.154.2:9100
+          - 172.18.154.1:9100
+          - 172.18.153.21:9100
+          - 172.18.153.22:9100
+          - 172.18.153.23:9100
+          - 172.18.153.28:9100
+          - 172.18.154.18:9182
+          - 172.18.154.17:9182
