@@ -3,7 +3,7 @@ global:
   evaluation_interval: 1m
   scrape_timeout: 10s
   external_labels:
-    customer: blc
+    customer: blue-wallet
 
 scrape_configs:
   - job_name: prometheus
