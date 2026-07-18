@@ -2,6 +2,8 @@ global:
   scrape_interval: 1m
   evaluation_interval: 1m
   scrape_timeout: 10s
+  external_labels:
+    customer: libano
 
 scrape_configs:
   - job_name: prometheus
@@ -49,3 +51,5 @@ scrape_configs:
           - "172.18.92.9:9182"
           - "172.18.91.92:9182"
           - "172.18.92.60:9100"
+remote_write:
+  - url: http://victoria-metrics:8428/api/v1/write          
