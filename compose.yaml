@@ -254,8 +254,8 @@ services:
       - monitoring
     volumes:
       - victoria-metrics-storage:/storage
-    mem_limit: 4000m
-    cpus: 2.0
+    mem_limit: 2000m
+    cpus: 1.0
     restart: unless-stopped
 
 volumes:
